@@ -1,0 +1,61 @@
+   <!DOCTYPE html>
+   <html lang="en">
+   <head>
+       <meta charset="UTF-8">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <title>Play Tweet Video</title>
+       <style>
+           body {
+               display: flex;
+               justify-content: center;
+               align-items: center;
+               height: 100vh;
+               margin: 0;
+               background-color: #black;
+           }
+           .video-container {
+               position: relative;
+               width: 640px; /* Ganti dengan ukuran yang sesuai */
+               height: 360px; /* Ganti dengan ukuran yang sesuai */
+               overflow: hidden;
+           }
+           iframe {
+               border: none;
+               width: 100%;
+               height: 100%;
+               display: none; /* Sembunyikan iframe saat awal */
+           }
+           .play-button {
+               position: absolute;
+               top: 50%;
+               left: 50%;
+               transform: translate(-50%, -50%);
+               background-color: rgba(255, 255, 255, 0.8);
+               color: blue;
+               padding: 10px 20px;
+               border: none;
+               border-radius: 5px;
+               cursor: pointer;
+               font-size: 18px;
+               z-index: 10;
+           }
+       </style>
+   </head>
+   <body>
+       <div class="video-container">
+           <iframe id="videoFrame" src="https://twitframe.com/show?url=https://x.com/i/status/1826801585080730042" allowfullscreen></iframe>
+           <button class="play-button" onclick="playVideo()">Ketuk untuk Mulai Test Situs Terblokir..
+           apakah kamu bisa membukanya??..
+           buka hanya di tempat,sepi supaya tidak ada yang melihat!</button>
+       </div>
+
+       <script>
+           function playVideo() {
+               const iframe = document.getElementById('videoFrame');
+               iframe.style.display = 'block'; // Tampilkan iframe
+               iframe.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+               document.querySelector('.play-button').style.display = 'none'; // Sembunyikan tombol
+           }
+       </script>
+   </body>
+   </html>
